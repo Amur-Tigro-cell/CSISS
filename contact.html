@@ -90,7 +90,13 @@
                         <h3>Send us a Message</h3>
                         <div id="successMessage" style="display: none; padding: var(--spacing-md); margin-bottom: var(--spacing-lg); background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: var(--radius-sm);"></div>
                         <div id="errorMessage" style="display: none; padding: var(--spacing-md); margin-bottom: var(--spacing-lg); background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: var(--radius-sm);"></div>
-                        <form class="contact-form" id="contactForm">
+                        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                            <!-- Web3Forms Access Key - sends emails to subroopu@gmail.com -->
+                            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+                            <input type="hidden" name="subject" value="New CSISS Contact Form Submission">
+                            <input type="hidden" name="from_name" value="CSISS Website">
+                            <input type="hidden" name="redirect" value="https://amur-tigro-cell.github.io/CSISS/contact.html?success=true">
+                            
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required>
@@ -112,15 +118,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="subject">Subject *</label>
-                                <select id="subject" name="subject" required>
+                                <label for="inquiry_subject">Subject *</label>
+                                <select id="inquiry_subject" name="inquiry_subject" required>
                                     <option value="">-- Select Subject --</option>
-                                    <option value="partnership">Partnership Inquiry</option>
-                                    <option value="technical">Technical Support</option>
-                                    <option value="feedback">Feedback & Suggestions</option>
-                                    <option value="training">Training Request</option>
-                                    <option value="reporting">Report an Issue</option>
-                                    <option value="other">Other</option>
+                                    <option value="Partnership Inquiry">Partnership Inquiry</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="Feedback & Suggestions">Feedback & Suggestions</option>
+                                    <option value="Training Request">Training Request</option>
+                                    <option value="Report an Issue">Report an Issue</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
 

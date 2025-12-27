@@ -1,6 +1,6 @@
 /**
  * Contact Form Handler
- * Handles contact form submission, validation, and feedback
+ * Handles contact form submission via Web3Forms (sends to subroopu@gmail.com)
  */
 
 const ContactForm = (() => {
@@ -9,15 +9,27 @@ const ContactForm = (() => {
     const errorMessage = document.getElementById('errorMessage');
 
     /**
+     * Check for success parameter in URL
+     */
+    const checkUrlParams = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            showSuccess('Thank you for your message! We will get back to you soon.');
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
+
+    /**
      * Validate form inputs
      * @returns {boolean} True if all fields are valid
      */
     const validateForm = () => {
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const subject = document.getElementById('subject').value;
+        const subject = document.getElementById('inquiry_subject').value;
         const message = document.getElementById('message').value.trim();
+        const consent = document.getElementById('consent').checked;
 
         // Clear previous messages
         if (successMessage) successMessage.style.display = 'none';
@@ -53,6 +65,11 @@ const ContactForm = (() => {
 
         if (message.length < 10) {
             showError('Message must be at least 10 characters long');
+            return false;
+        }
+
+        if (!consent) {
+            showError('Please agree to be contacted regarding your inquiry');
             return false;
         }
 
@@ -96,76 +113,52 @@ const ContactForm = (() => {
      * Handle form submission
      * @param {Event} e - Form submission event
      */
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Validate form
+        // Validate form first
         if (!validateForm()) {
             return;
         }
 
-        // Get form data
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const organization = document.getElementById('organization').value.trim();
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value.trim();
-        const partnership = document.getElementById('partnership').checked;
-
-        // Prepare submission data
-        const formData = {
-            name,
-            email,
-            phone,
-            organization,
-            subject,
-            message,
-            partnership,
-            timestamp: new Date().toISOString()
-        };
-
-        // Log data (for demonstration - in production, send to backend)
-        console.log('Form submitted:', formData);
-
-        // Simulate sending data
-        submitForm(formData);
-    };
-
-    /**
-     * Submit form data to backend
-     * @param {Object} formData - Form data to submit
-     */
-    const submitForm = (formData) => {
         // Show loading state
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        // Simulate API call (in production, replace with actual endpoint)
-        setTimeout(() => {
-            // For demonstration, always succeed
-            // In production, implement actual API endpoint
-            
-            // Save to localStorage for demonstration
-            const submissions = JSON.parse(localStorage.getItem('csiss_submissions') || '[]');
-            submissions.push(formData);
-            localStorage.setItem('csiss_submissions', JSON.stringify(submissions));
+        try {
+            // Get form data
+            const formData = new FormData(contactForm);
 
-            // Reset form and show success
-            resetForm();
-            showSuccess('Thank you for your inquiry! We will contact you soon.');
+            // Submit to Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
 
+            const data = await response.json();
+
+            if (data.success) {
+                // Reset form and show success
+                resetForm();
+                showSuccess('Thank you for your message! We will get back to you soon.');
+                
+                // Clear success message after 5 seconds
+                setTimeout(() => {
+                    if (successMessage) successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                showError('Something went wrong. Please try again or contact us directly at info@csiss.gov.bd');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            showError('Failed to send message. Please check your connection or contact us directly at info@csiss.gov.bd');
+        } finally {
             // Reset button
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-
-            // Clear success message after 5 seconds
-            setTimeout(() => {
-                if (successMessage) successMessage.style.display = 'none';
-            }, 5000);
-        }, 1000);
+        }
     };
 
     /**
@@ -193,3 +186,5 @@ if (document.readyState === 'loading') {
 } else {
     ContactForm.init();
 }
+    checkUrlParams();
+        
