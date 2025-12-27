@@ -1,0 +1,2 @@
+# Simple HTTP server requirements for Render deployment
+# This is a minimal configuration - Render has Python built-in

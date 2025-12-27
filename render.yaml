@@ -1,0 +1,6 @@
+# Render Deployment Configuration
+
+runtime: python
+python_version: 3.11.0
+build_command: pip install -r requirements.txt
+start_command: python -m http.server 8000

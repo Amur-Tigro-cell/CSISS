@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSISS Contact - Get in touch with us">
+    <meta name="theme-color" content="#006747">
+    <title>CSISS - Contact Us</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/website.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-section">
+                    <div class="logo-badge">🛡️</div>
+                    <h1 class="site-title">CSISS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="overview.html">Overview</a></li>
+                    <li><a href="challenges.html">Challenges</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="implementation.html">Implementation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Get in Touch with the CSISS Team</p>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="content-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <!-- Contact Information -->
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>We'd love to hear from you. Whether you have questions, partnership proposals, or want to join the CSISS initiative, please reach out to us.</p>
+                        
+                        <div class="contact-card">
+                            <h4>📧 Email</h4>
+                            <p><a href="mailto:info@csiss.gov.bd">info@csiss.gov.bd</a></p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-light);">For general inquiries</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <h4>📱 Phone</h4>
+                            <p><a href="tel:+880XXX-XXXXXX">+880-XXX-XXXXXX</a></p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-light);">Available Monday to Friday, 9 AM - 5 PM (Bangladesh Time)</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <h4>🌐 Website</h4>
+                            <p><a href="https://www.csiss.gov.bd" target="_blank">www.csiss.gov.bd</a></p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-light);">Visit our website for latest updates</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <h4>📍 Office Location</h4>
+                            <p>Dhaka, Bangladesh</p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-light);">Multiple regional offices across all 64 districts</p>
+                        </div>
+
+                        <h3 style="margin-top: var(--spacing-xl);">Why Partner with CSISS?</h3>
+                        <ul class="partnership-benefits">
+                            <li>Strengthen community safety and disaster response</li>
+                            <li>Leverage cutting-edge technology for social impact</li>
+                            <li>Collaborate with government and international organizations</li>
+                            <li>Build resilient communities across Bangladesh</li>
+                            <li>Contribute to national security and development</li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <h3>Send us a Message</h3>
+                        <div id="successMessage" style="display: none; padding: var(--spacing-md); margin-bottom: var(--spacing-lg); background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: var(--radius-sm);"></div>
+                        <div id="errorMessage" style="display: none; padding: var(--spacing-md); margin-bottom: var(--spacing-lg); background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: var(--radius-sm);"></div>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="organization">Organization</label>
+                                <input type="text" id="organization" name="organization">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">-- Select Subject --</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                    <option value="training">Training Request</option>
+                                    <option value="reporting">Report an Issue</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="6" required></textarea>
+                            </div>
+
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">I agree to be contacted regarding my inquiry</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Partnership Opportunities -->
+                <section class="partnership-section">
+                    <h3>Partnership Opportunities</h3>
+                    <div class="partnership-grid">
+                        <div class="partnership-item">
+                            <h4>🏛️ Government Agencies</h4>
+                            <p>Work with us to strengthen emergency response systems and community safety infrastructure across Bangladesh.</p>
+                        </div>
+                        <div class="partnership-item">
+                            <h4>🤝 NGOs & Civil Society</h4>
+                            <p>Collaborate with us to extend CSISS reach to underserved communities and vulnerable populations.</p>
+                        </div>
+                        <div class="partnership-item">
+                            <h4>📱 Technology Partners</h4>
+                            <p>Contribute your expertise to enhance CSISS capabilities with advanced technology solutions.</p>
+                        </div>
+                        <div class="partnership-item">
+                            <h4>💼 Corporate Partners</h4>
+                            <p>Invest in community safety and disaster resilience through CSISS sponsorship and support programs.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <h3>Join Us in Building a Safer Bangladesh</h3>
+                <p>Together, we can create a community-driven safety and disaster response system</p>
+                <div class="cta-buttons">
+                    <a href="#contactForm" class="btn btn-primary">Send Inquiry Now</a>
+                    <a href="implementation.html" class="btn btn-secondary">View Implementation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CSISS</h4>
+                    <p>Community Safety & Information Support System for Bangladesh</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="overview.html">Overview</a></li>
+                        <li><a href="challenges.html">Challenges</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📧 info@csiss.gov.bd</p>
+                    <p>📱 +880-XXX-XXXXXX</p>
+                    <p>🌐 www.csiss.gov.bd</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <p>Connect with us on social media for updates and news</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CSISS - Community Safety & Information Support System. All rights reserved.</p>
+                <p>"Safety is not just a government responsibility - it's a community commitment"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/website.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
